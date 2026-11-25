@@ -1,0 +1,52 @@
+---
+// Página de una ficha (p. ej. /falacias/hombre-de-paja/)
+import { render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { secciones, getSeccion } from '../../data/secciones';
+import { fichasDe, formatoFecha } from '../../data/contenido';
+
+export async function getStaticPaths() {
+  const rutas = [];
+  for (const s of secciones) {
+    for (const f of await fichasDe(s.id)) {
+      rutas.push({ params: { seccion: s.id, ficha: f.id }, props: { f } });
+    }
+  }
+  return rutas;
+}
+
+const { f } = Astro.props;
+const seccion = getSeccion(f.collection);
+const { Content } = await render(f);
+const d = f.data as Record<string, any>;
+---
+
+<Base titulo={d.titulo} descripcion={d.resumen}>
+  <article class="ficha">
+    <nav class="migas"><a href={`/${seccion.id}/`}>← {seccion.nombre}</a></nav>
+
+    <p class="antetitulo">{seccion.singular}</p>
+    <h1>{d.titulo}</h1>
+    {d.nombreLatin && <p class="meta"><em>{d.nombreLatin}</em></p>}
+    {d.autor && <p class="meta">{d.autor}{d.anio ? ` · ${d.anio}` : ''}</p>}
+    {d.edad && <p class="meta">Para leer con niños de {d.edad}</p>}
+    {d.epoca && <p class="meta">{d.epoca}</p>}
+    <p class="resumen">{d.resumen}</p>
+
+    {d.tambienLlamada?.length > 0 && (
+      <p class="meta">También llamada: {d.tambienLlamada.join(', ')}</p>
+    )}
+
+    {d.archivo && (
+      <p class="no-imprimir"><a class="boton" href={d.archivo} download>Descargar{d.formato ? ` (${d.formato})` : ''}</a></p>
+    )}
+
+    <Content />
+
+    <hr />
+    <p class="meta">
+      {d.etiquetas.map((e: string) => <span class="etiqueta">{e}</span>)}
+      <br />Publicado el {formatoFecha(d.fecha)}
+    </p>
+  </article>
+</Base>

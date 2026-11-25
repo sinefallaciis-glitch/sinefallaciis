@@ -1,0 +1,16 @@
+# Dependencias (se reinstalan con `npm install`)
+node_modules/
+
+# Web generada (la crea `npm run build`)
+dist/
+.astro/
+
+# Sistema y editores
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Variables privadas
+.env
+.env.*

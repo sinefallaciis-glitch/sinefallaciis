@@ -1,0 +1,55 @@
+---
+// Plantilla común: cabecera, menú y pie en todas las páginas
+import '../styles/global.css';
+import { secciones } from '../data/secciones';
+
+interface Props {
+  titulo?: string;
+  descripcion?: string;
+}
+
+const { titulo, descripcion = 'Herramientas para pensar mejor: falacias, sesgos, historias, libros y cuentos sobre pensamiento crítico.' } = Astro.props;
+const tituloCompleto = titulo ? `${titulo} · Sine Fallaciis` : 'Sine Fallaciis · Pensamiento crítico';
+const ruta = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{tituloCompleto}</title>
+    <meta name="description" content={descripcion} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={new URL(ruta, Astro.site)} />
+    <meta property="og:title" content={tituloCompleto} />
+    <meta property="og:description" content={descripcion} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_ES" />
+  </head>
+  <body>
+    <header class="cabecera">
+      <div class="contenedor">
+        <a class="marca" href="/">Sine <span>Fallaciis</span></a>
+        <nav class="menu" aria-label="Secciones">
+          {secciones.map((s) => (
+            <a href={`/${s.id}/`} aria-current={ruta.startsWith(`/${s.id}/`) ? 'page' : undefined}>{s.nombre}</a>
+          ))}
+          <a href="/sobre/" aria-current={ruta.startsWith('/sobre/') ? 'page' : undefined}>Sobre</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div class="contenedor">
+        <slot />
+      </div>
+    </main>
+
+    <footer class="pie">
+      <div class="contenedor">
+        <p><strong>Sine Fallaciis</strong> — «sin falacias». Un proyecto abierto para aprender a pensar mejor.</p>
+      </div>
+    </footer>
+  </body>
+</html>

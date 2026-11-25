@@ -1,0 +1,48 @@
+---
+import Base from '../layouts/Base.astro';
+import { secciones, getSeccion } from '../data/secciones';
+import { fichasDe, ultimasFichas } from '../data/contenido';
+
+const recuentos = Object.fromEntries(
+  await Promise.all(secciones.map(async (s) => [s.id, (await fichasDe(s.id)).length]))
+);
+const ultimas = await ultimasFichas(6);
+---
+
+<Base>
+  <section class="portada">
+    <p class="antetitulo">Sine fallaciis · «sin falacias»</p>
+    <h1>Herramientas para pensar mejor</h1>
+    <p class="lema">
+      Falacias, sesgos, historias reales, libros y cuentos para aprender a distinguir un buen argumento
+      de uno que solo lo parece.
+    </p>
+    <a class="boton" href="/falacias/">Empieza por las falacias</a>
+  </section>
+
+  <h2>Secciones</h2>
+  <ul class="rejilla">
+    {secciones.map((s) => (
+      <li>
+        <a class="tarjeta" href={`/${s.id}/`}>
+          <h3>{s.nombre}</h3>
+          <p>{s.descripcion}</p>
+          <p class="meta">{recuentos[s.id]} {recuentos[s.id] === 1 ? 'ficha' : 'fichas'}</p>
+        </a>
+      </li>
+    ))}
+  </ul>
+
+  <h2>Lo último</h2>
+  <ul class="rejilla">
+    {ultimas.map((f) => (
+      <li>
+        <a class="tarjeta" href={`/${f.collection}/${f.id}/`}>
+          <p class="meta">{getSeccion(f.collection).singular}</p>
+          <h3>{f.data.titulo}</h3>
+          <p>{f.data.resumen}</p>
+        </a>
+      </li>
+    ))}
+  </ul>
+</Base>
