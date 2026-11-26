@@ -1,0 +1,9 @@
+// Configuración para publicar la web en Cloudflare
+{
+  "name": "sinefallaciis",
+  "compatibility_date": "2026-11-26",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page"
+  }
+}
