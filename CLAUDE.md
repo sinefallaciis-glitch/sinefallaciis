@@ -17,7 +17,8 @@ Lee antes de trabajar: `docs/ESTRATEGIA.md` (qué y para quién), `docs/KPIS.md`
 ## Flujo de la revisión diaria
 
 1. **Medir**: `npm install && npm run build && npm run kpis -- --guardar && npm run lighthouse`.
-   Compara con la línea anterior de `data/kpis-historico.jsonl`.
+   Compara con la línea anterior de `data/kpis-historico.jsonl`. Si existe `data/visitas.json`, usa también la
+   audiencia: qué fichas se leen más y menos, de dónde llega la gente y si las visitas crecen.
 2. **Escuchar**: revisa las *issues* abiertas del repositorio (sugerencias y errores de lectores) con `gh issue list`
    si está disponible. Un error de contenido reportado tiene prioridad máxima.
 3. **Elegir**: 1 a 3 mejoras del backlog que más muevan los KPIs en rojo. Mejor poco y bien que mucho y flojo.

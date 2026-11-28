@@ -1,0 +1,32 @@
+# Cada mañana descarga los datos de visitas de Cloudflare Web Analytics
+# y los guarda en data/visitas.json para que la revisión diaria los use.
+name: Analítica diaria
+
+on:
+  schedule:
+    - cron: '20 4 * * *' # 05:20 en Madrid (invierno), antes de la revisión diaria
+  workflow_dispatch: # permite lanzarla a mano desde GitHub
+
+permissions:
+  contents: write
+
+jobs:
+  visitas:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Descargar datos de Cloudflare
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: node scripts/analitica.mjs
+      - name: Guardar en el repositorio
+        run: |
+          git config user.name "analitica-bot"
+          git config user.email "analitica-bot@users.noreply.github.com"
+          git add data/visitas.json data/visitas-historico.jsonl
+          git diff --cached --quiet || git commit -m "Datos de visitas $(date -u +%F)"
+          git push

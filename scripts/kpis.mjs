@@ -226,6 +226,32 @@ ${q.sinFuentes.length ? 'Sin fuentes: ' + q.sinFuentes.join(', ') : ''}
 ${t.detalleEnlacesRotos.length ? '\nEnlaces rotos:\n' + t.detalleEnlacesRotos.map((e) => '- ' + e).join('\n') : ''}
 ${t.paginas === 0 ? '\n⚠️ No hay carpeta dist/: ejecuta `npm run build` antes.' : ''}`);
 
+// ---------- audiencia (si la acción de GitHub ha descargado los datos) ----------
+const VISITAS = path.join(RAIZ, 'data/visitas.json');
+if (fs.existsSync(VISITAS)) {
+  const v = JSON.parse(leer(VISITAS));
+  kpis.audiencia = {
+    actualizado: v.actualizado,
+    visitas7d: v.visitas7d,
+    visitas30d: v.visitas30d,
+    paginasPorVisita30d: v.paginasPorVisita30d,
+    top5: (v.paginasMasVistas || []).slice(0, 5).map((p) => `${p.requestPath} (${p.paginasVistas})`),
+  };
+  const a = kpis.audiencia;
+  console.log(`
+## Audiencia (Cloudflare Web Analytics, datos del ${String(a.actualizado).slice(0, 10)})
+| KPI | Valor | Objetivo |
+|---|---|---|
+| Visitas últimos 7 días | ${a.visitas7d} | crecer semana a semana |
+| Visitas últimos 30 días | ${a.visitas30d} | crecer mes a mes |
+| Páginas por visita (30 d) | ${a.paginasPorVisita30d ?? '—'} ${ok((a.paginasPorVisita30d ?? 0) >= 2)} | ≥2 |
+
+Páginas más vistas: ${a.top5.join(' · ') || '—'}
+Procedencia: ${(v.procedencia || []).slice(0, 5).map((r) => `${r.refererHost || 'directo'} (${r.visitas})`).join(' · ') || '—'}`);
+} else {
+  console.log('\n## Audiencia\nSin datos todavía (data/visitas.json no existe: falta activar la acción «Analítica diaria» en GitHub).');
+}
+
 if (process.argv.includes('--guardar')) {
   const historico = path.join(RAIZ, 'data/kpis-historico.jsonl');
   fs.mkdirSync(path.dirname(historico), { recursive: true });

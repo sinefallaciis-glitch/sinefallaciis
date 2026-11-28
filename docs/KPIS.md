@@ -48,9 +48,12 @@ del agente revisor manda.
 | Páginas sin meta descripción | 0 |
 | Lighthouse: rendimiento, accesibilidad, buenas prácticas, SEO | ≥95 en todas |
 
-## 4. Audiencia (pendiente de activar)
+## 4. Audiencia
 
-Requieren activar Cloudflare Web Analytics y dar acceso de lectura a los datos. Hasta entonces no se miden.
+Cloudflare Web Analytics está activo (sin cookies, respetuoso con la privacidad). Cada mañana la acción de GitHub
+«Analítica diaria» (`.github/workflows/analitica.yml` + `scripts/analitica.mjs`) descarga los datos a
+`data/visitas.json` y `data/visitas-historico.jsonl`, y `npm run kpis` los incluye en el informe.
+Necesita los secretos `CLOUDFLARE_API_TOKEN` (solo lectura de analítica) y `CLOUDFLARE_ACCOUNT_ID` en GitHub.
 
 | KPI | Objetivo inicial |
 |---|---|
