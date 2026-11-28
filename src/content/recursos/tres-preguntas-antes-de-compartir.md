@@ -2,6 +2,7 @@
 titulo: Tres preguntas antes de compartir
 resumen: Una ficha para imprimir y pegar en la nevera, el aula o junto al ordenador.
 fecha: 2026-11-25
+publico: [mayores, jovenes, adultos, educadores]
 formato: ficha imprimible
 etiquetas: [noticias, redes sociales, imprimible]
 orden: 1

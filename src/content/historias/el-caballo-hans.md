@@ -2,6 +2,9 @@
 titulo: Hans, el caballo que sabía contar
 resumen: Un caballo que parecía resolver sumas y una investigación que enseñó a la ciencia a desconfiar de sus propias señales.
 fecha: 2026-11-25
+publico: [mayores, jovenes, adultos]
+fuentes:
+  - "Pfungst, O. (1907). Das Pferd des Herrn von Osten (Der kluge Hans). Leipzig: J. A. Barth. Traducción inglesa: Clever Hans (The Horse of Mr. von Osten), 1911."
 epoca: Berlín, principios del siglo XX
 etiquetas: [ciencia, experimentos, sesgo del observador]
 orden: 1

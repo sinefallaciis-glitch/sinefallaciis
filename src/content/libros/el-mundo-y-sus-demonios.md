@@ -4,6 +4,7 @@ autor: Carl Sagan
 anio: 1995
 resumen: Una defensa apasionada del pensamiento científico como herramienta cotidiana para no dejarse engañar.
 fecha: 2026-11-25
+publico: [jovenes, adultos]
 etiquetas: [ciencia, escepticismo, clásico]
 orden: 1
 ---

@@ -3,6 +3,9 @@ titulo: Ad hominem
 nombreLatin: Argumentum ad hominem («contra la persona»)
 resumen: Atacar a quien da un argumento en lugar de responder al argumento.
 fecha: 2026-11-25
+publico: [jovenes, adultos]
+fuentes:
+  - "Walton, D. (2008). Informal Logic: A Pragmatic Approach (2.ª ed.). Cambridge University Press."
 etiquetas: [relevancia, debate]
 tambienLlamada: [ataque personal]
 orden: 1

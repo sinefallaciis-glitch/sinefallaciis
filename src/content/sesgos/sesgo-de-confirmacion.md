@@ -2,6 +2,9 @@
 titulo: Sesgo de confirmación
 resumen: Buscamos, recordamos e interpretamos la información de forma que confirme lo que ya creíamos.
 fecha: 2026-11-25
+publico: [jovenes, adultos]
+fuentes:
+  - "Nickerson, R. S. (1998). Confirmation bias: A ubiquitous phenomenon in many guises. Review of General Psychology, 2(2), 175-220."
 etiquetas: [memoria, información]
 orden: 1
 ---

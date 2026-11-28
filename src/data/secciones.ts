@@ -43,3 +43,12 @@ export const secciones = [
 export type SeccionId = (typeof secciones)[number]['id'];
 
 export const getSeccion = (id: string) => secciones.find((s) => s.id === id)!;
+
+// Públicos (edades) a los que se dirige el contenido
+export const publicos = {
+  ninos: 'Peques (hasta 8 años)',
+  mayores: 'Niños de 9 a 12',
+  jovenes: 'Adolescentes',
+  adultos: 'Adultos',
+  educadores: 'Familias y docentes',
+} as const;

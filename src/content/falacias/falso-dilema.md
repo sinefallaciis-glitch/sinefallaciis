@@ -2,6 +2,9 @@
 titulo: Falso dilema
 resumen: Presentar solo dos opciones cuando en realidad hay más.
 fecha: 2026-11-25
+publico: [mayores, jovenes, adultos]
+fuentes:
+  - "Walton, D. (2008). Informal Logic: A Pragmatic Approach (2.ª ed.). Cambridge University Press."
 etiquetas: [estructura, decisiones]
 tambienLlamada: [falsa dicotomía, «o blanco o negro»]
 orden: 3

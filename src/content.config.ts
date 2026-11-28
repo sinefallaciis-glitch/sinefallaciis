@@ -11,6 +11,9 @@ const base = z.object({
   fecha: z.coerce.date(),
   etiquetas: z.array(z.string()).default([]),
   borrador: z.boolean().default(false), // true = no se publica
+  // A quién va dirigida: ninos (hasta 8), mayores (9-12), jovenes (13-17), adultos, educadores
+  publico: z.array(z.enum(['ninos', 'mayores', 'jovenes', 'adultos', 'educadores'])).default([]),
+  fuentes: z.array(z.string()).default([]), // referencias que respaldan los datos de la ficha
   orden: z.number().optional(), // opcional, para ordenar a mano
 });
 

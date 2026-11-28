@@ -2,7 +2,7 @@
 // Página de una ficha (p. ej. /falacias/hombre-de-paja/)
 import { render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
-import { secciones, getSeccion } from '../../data/secciones';
+import { secciones, getSeccion, publicos } from '../../data/secciones';
 import { fichasDe, formatoFecha } from '../../data/contenido';
 
 export async function getStaticPaths() {
@@ -32,6 +32,9 @@ const d = f.data as Record<string, any>;
     {d.edad && <p class="meta">Para leer con niños de {d.edad}</p>}
     {d.epoca && <p class="meta">{d.epoca}</p>}
     <p class="resumen">{d.resumen}</p>
+    {d.publico?.length > 0 && !d.edad && (
+      <p class="meta">Para: {d.publico.map((p: keyof typeof publicos) => publicos[p]).join(' · ')}</p>
+    )}
 
     {d.tambienLlamada?.length > 0 && (
       <p class="meta">También llamada: {d.tambienLlamada.join(', ')}</p>
@@ -43,10 +46,21 @@ const d = f.data as Record<string, any>;
 
     <Content />
 
+    {d.fuentes?.length > 0 && (
+      <section class="fuentes">
+        <h2>Fuentes</h2>
+        <ul>{d.fuentes.map((f: string) => <li>{f}</li>)}</ul>
+      </section>
+    )}
+
     <hr />
     <p class="meta">
       {d.etiquetas.map((e: string) => <span class="etiqueta">{e}</span>)}
       <br />Publicado el {formatoFecha(d.fecha)}
+    </p>
+    <p class="meta no-imprimir">
+      ¿Has visto un error o se te ocurre una mejora?
+      <a href={`https://github.com/sinefallaciis-glitch/sinefallaciis/issues/new?title=${encodeURIComponent('Sobre: ' + d.titulo)}`} rel="noopener">Cuéntanoslo</a>.
     </p>
   </article>
 </Base>

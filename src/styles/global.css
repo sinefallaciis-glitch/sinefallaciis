@@ -105,6 +105,10 @@ main { padding: 2.5rem 0 4rem; }
 }
 .boton:hover { background: var(--acento-oscuro); color: #fff; }
 
+.fuentes { margin-top: 2rem; font-size: 0.95rem; color: var(--tinta-suave); }
+.fuentes h2 { font-size: 1.1rem; }
+.fuentes li { margin-bottom: 0.3rem; }
+
 /* Pie */
 .pie { border-top: 1px solid var(--linea); padding: 2rem 0; font-family: var(--sans); font-size: 0.9rem; color: var(--tinta-suave); }
 

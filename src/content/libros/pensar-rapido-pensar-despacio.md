@@ -4,6 +4,7 @@ autor: Daniel Kahneman
 anio: 2011
 resumen: Cómo funcionan nuestros dos modos de pensar y por qué el rápido nos hace caer en errores predecibles.
 fecha: 2026-11-25
+publico: [adultos]
 etiquetas: [psicología, sesgos, decisiones]
 orden: 2
 ---

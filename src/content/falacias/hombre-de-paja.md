@@ -2,6 +2,9 @@
 titulo: Hombre de paja
 resumen: Deformar el argumento del otro para que sea más fácil de atacar.
 fecha: 2026-11-25
+publico: [jovenes, adultos]
+fuentes:
+  - "Walton, D. (2008). Informal Logic: A Pragmatic Approach (2.ª ed.). Cambridge University Press."
 etiquetas: [distorsión, debate]
 tambienLlamada: [espantapájaros, falacia del muñeco de paja]
 orden: 2
