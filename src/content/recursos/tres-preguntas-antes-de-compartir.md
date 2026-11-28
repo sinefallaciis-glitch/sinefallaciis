@@ -28,4 +28,4 @@ Lo que nos indigna o nos da la razón se comparte más rápido. Ese es justo el 
 
 ---
 
-**Sine Fallaciis** · sinefallaciis.com
+**Sine Fallaciis** · sinefallaciis.com · Licencia CC BY 4.0: imprímela y compártela libremente.
