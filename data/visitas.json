@@ -1,0 +1,47 @@
+{
+  "actualizado": "2026-11-28T08:26:42.968Z",
+  "periodo": {
+    "desde": "2026-10-29",
+    "hasta": "2026-11-27"
+  },
+  "visitas7d": 10,
+  "visitas30d": 10,
+  "paginasVistas7d": 10,
+  "paginasVistas30d": 10,
+  "porDia": [
+    {
+      "date": "2026-11-27",
+      "paginasVistas": 10,
+      "visitas": 10
+    }
+  ],
+  "paginasMasVistas": [
+    {
+      "requestPath": "/",
+      "paginasVistas": 10,
+      "visitas": 10
+    }
+  ],
+  "procedencia": [
+    {
+      "refererHost": "",
+      "paginasVistas": 10,
+      "visitas": 10
+    }
+  ],
+  "paises": [
+    {
+      "countryName": "US",
+      "paginasVistas": 10,
+      "visitas": 10
+    }
+  ],
+  "dispositivos": [
+    {
+      "deviceType": "desktop",
+      "paginasVistas": 10,
+      "visitas": 10
+    }
+  ],
+  "paginasPorVisita30d": 1
+}
